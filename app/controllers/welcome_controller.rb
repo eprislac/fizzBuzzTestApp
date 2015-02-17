@@ -3,20 +3,26 @@ class WelcomeController < ApplicationController
 
   end
 
+  def is_integer?(string)
+    true if Integer(string) rescue false
+  end
   def get_fizzbuzz
-    @number = params[:number].to_i
     @word = ""
-
-    if (@number % 3 == 0) && (@number % 5 == 0)
-      @word = "FizzBuzz"
-    else
-      if @number % 3 == 0
-        @word = "Fizz"
-      elsif @number % 5 == 0
-        @word = "Buzz"
+    if is_integer?(params[:number])
+      @number = params[:number].to_i
+      if (@number % 3 == 0) && (@number % 5 == 0)
+        @word = "FizzBuzz"
       else
-        @word = "Not Found"
+        if @number % 3 == 0
+          @word = "Fizz"
+        elsif @number % 5 == 0
+          @word = "Buzz"
+        else
+          @word = ""
+        end
       end
+    else
+      @word = "Not Found"
     end
 
     @response = {

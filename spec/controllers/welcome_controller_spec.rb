@@ -22,8 +22,13 @@ RSpec.describe WelcomeController, type: :controller do
       expect(json["word"]).to eq("FizzBuzz")
     end
 
-    it "should return '(404) not found' for numbers that are not a multiple of 3 or 5" do
+    it "should return an empty string for numbers that are not multiples of 3 & 5" do
       get 'get_fizzbuzz', format: :json, number: 2
+      expect(json["word"]).to eq("")
+    end
+
+    it "should return '(404) not found' for invalid characters" do
+      get 'get_fizzbuzz', format: :json, number: "A"
       expect(response.status).to eq(404)
     end
 
