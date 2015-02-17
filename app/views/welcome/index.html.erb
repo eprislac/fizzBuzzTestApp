@@ -1,7 +1,9 @@
 <ul>
   <% (1..100).to_a.each do |i| %>
     <li>
-      <a href="#" class="fizzbuzzlink" data-number="<%= i %> id="link-<%= i %>"><%= i %></a>
+      <a href="#" class="fizzbuzzlink" data-number="<%= i %>" id="link-<%= i %>"><%= i %></a>
+      :&nbsp;
+      <span class="fizzbuzz_span" data-number="<%= i %>"></span>
     </li>
   <% end %>
 </ul>

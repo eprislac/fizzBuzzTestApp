@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get 'welcome/get_fizzbuzz' => 'welcome#get_fizzbuzz'
+  get "/404" => "errors#not_found"
+  get "/500" => "errors#exception"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
